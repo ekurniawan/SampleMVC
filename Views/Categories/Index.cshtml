@@ -9,7 +9,9 @@
 
 <body>
     <h1>List Of Categories</h1>
-    <p>Username: @ViewData["username"] &nbsp; Role: @ViewBag.role</p>
+    <p>Username: @ViewData["username"] &nbsp; Role: @ViewBag.role</p><br />
+
+    <a href="/Categories/Create">Create New Category</a>&nbsp;
     <table border="1">
         <tr>
             <th>Category ID</th>
@@ -20,6 +22,7 @@
             <tr>
                 <td>@category.CategoryID</td>
                 <td>@category.CategoryName</td>
+                <td><a href="/Categories/Edit/@category.CategoryID">edit</a></td>
             </tr>
         }
     </table>
