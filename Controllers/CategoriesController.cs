@@ -27,7 +27,6 @@ public class CategoriesController : Controller
         ViewBag.role = "admin";
 
         ViewData["users"] = users;
-
         return View(categories);
     }
 
@@ -103,5 +102,9 @@ public class CategoriesController : Controller
         return RedirectToAction("Index");
     }
 
+    public IActionResult Json()
+    {
+        return Json(categories);
+    }
 
 }
