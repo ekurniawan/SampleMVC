@@ -44,4 +44,30 @@ public class CategoriesController : Controller
         categories.Add(category);
         return RedirectToAction("Index");
     }
+
+    public IActionResult Edit(int id)
+    {
+        var editCategory = categories.SingleOrDefault(c => c.CategoryID == id);
+        if (editCategory == null)
+        {
+            return NotFound();
+        }
+        return View(editCategory);
+    }
+
+    [HttpPost]
+    public IActionResult Edit(Category category)
+    {
+        if (category == null)
+        {
+            return BadRequest();
+        }
+        var editCategory = categories.SingleOrDefault(c => c.CategoryID == category.CategoryID);
+        if (editCategory == null)
+        {
+            return NotFound();
+        }
+        editCategory.CategoryName = category.CategoryName;
+        return RedirectToAction("Index");
+    }
 }

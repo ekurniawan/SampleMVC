@@ -1,0 +1,27 @@
+@model SampleMVC.Models.Category
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>@ViewData["Title"]</title>
+</head>
+
+<body>
+    <h1>Edit Category</h1>
+    <form method="post" action="/Categories/Edit">
+        <div>
+            <label for="CategoryID">Category ID :</label>
+            <input type="text" name="CategoryID" readonly value="@Model.CategoryID" />
+        </div>
+        <div>
+            <label for="CategoryName">Category Name :</label>
+            <input type="text" name="CategoryName" value="@Model.CategoryName" />
+        </div>
+        <div>
+            <input type="Submit" value="Edit" />
+        </div>
+    </form>
+</body>
+
+</html>
