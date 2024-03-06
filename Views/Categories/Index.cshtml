@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Categories Page</title>
+</head>
+
+<body>
+    <h1>List Of Categories</h1>
+    <p>Username: @ViewData["username"] &nbsp; Role: @ViewBag.role</p>
+    <table border="1">
+        <tr>
+            <th>Category ID</th>
+            <th>Category Name</th>
+        </tr>
+        @foreach (var category in Model)
+        {
+            <tr>
+                <td>@category.CategoryID</td>
+                <td>@category.CategoryName</td>
+            </tr>
+        }
+    </table>
+</body>
+
+</html>

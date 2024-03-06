@@ -1,0 +1,29 @@
+﻿@{
+    var role = "Admin";
+    string title = "Home Page";
+    var message = "Hello, World!";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home Page</title>
+</head>
+
+<body>
+    <h1>Home Page</h1>
+    <p>This is a @title ASP Core</p>
+    <p>Message @message</p>
+
+    @if (role == "Admin")
+    {
+        <p>Welcome Admin</p>
+    }
+    else
+    {
+        <p>Welcome User</p>
+    }
+</body>
+
+</html>
