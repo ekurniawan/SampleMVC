@@ -1,5 +1,11 @@
 ﻿@model IEnumerable<SampleMVC.Models.Category>
-
+@{
+    if (ViewData["users"] == null)
+    {
+        ViewData["users"] = new List<SampleMVC.Models.User>();
+    }
+    var users = ViewData["users"] as List<SampleMVC.Models.User>;
+}
 <!DOCTYPE html>
 <html>
 
@@ -11,11 +17,26 @@
     <h1>List Of Categories</h1>
     <p>Username: @ViewData["username"] &nbsp; Role: @ViewBag.role</p><br />
 
+    @foreach (var user in users)
+    {
+        <p>Username: @user.Username</p>
+        <p>UserID: @user.UserID</p>
+    }
+
+    <form method="post" action="/Categories/Search">
+        <p> <input type="text" id="search" name="search" placeholder="search category name" />
+            &nbsp;
+            <input type="submit" value="Search" />
+        </p>
+    </form>
+
     <a href="/Categories/Create">Create New Category</a>&nbsp;
     <table border="1">
         <tr>
             <th>Category ID</th>
             <th>Category Name</th>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
         </tr>
         @foreach (var category in Model)
         {
@@ -23,6 +44,7 @@
                 <td>@category.CategoryID</td>
                 <td>@category.CategoryName</td>
                 <td><a href="/Categories/Edit/@category.CategoryID">edit</a></td>
+                <td><a href="/Categories/Delete/@category.CategoryID">delete</a></td>
             </tr>
         }
     </table>

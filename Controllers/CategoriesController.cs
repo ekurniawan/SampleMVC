@@ -17,9 +17,16 @@ public class CategoriesController : Controller
 
     public IActionResult Index()
     {
+        List<User> users = new List<User>() {
+            new User { UserID = 1, Username = "ekurniawan", Password = "12345" },
+            new User { UserID = 2, Username = "admin", Password = "admin" }
+        };
+
         ViewData["username"] = "ekurniawan";
         //ViewBag.username = "ekurniawan";
         ViewBag.role = "admin";
+
+        ViewData["users"] = users;
 
         return View(categories);
     }
@@ -70,4 +77,31 @@ public class CategoriesController : Controller
         editCategory.CategoryName = category.CategoryName;
         return RedirectToAction("Index");
     }
+
+    [HttpPost]
+    public IActionResult Search(string search)
+    {
+        if (string.IsNullOrEmpty(search))
+        {
+            return View("Index", categories);
+        }
+        else
+        {
+            var searchResults = categories.Where(c => c.CategoryName.Contains(search));
+            return View("Index", searchResults);
+        }
+    }
+
+    public IActionResult Delete(int id)
+    {
+        var deleteCategory = categories.SingleOrDefault(c => c.CategoryID == id);
+        if (deleteCategory == null)
+        {
+            return NotFound();
+        }
+        categories.Remove(deleteCategory);
+        return RedirectToAction("Index");
+    }
+
+
 }
