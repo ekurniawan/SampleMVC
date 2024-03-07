@@ -6,7 +6,7 @@ public class HomeController : Controller
     // Home/Index
     public IActionResult Index()
     {
-        //return Content("Hello ASP.NET Core MVC! This is the Home Controller Index action.");
+        ViewData["Title"] = "Home Page";
         return View();
     }
 
