@@ -17,16 +17,6 @@ public class CategoriesController : Controller
 
     public IActionResult Index()
     {
-        List<User> users = new List<User>() {
-            new User { UserID = 1, Username = "ekurniawan", Password = "12345" },
-            new User { UserID = 2, Username = "admin", Password = "admin" }
-        };
-
-        ViewData["username"] = "ekurniawan";
-        //ViewBag.username = "ekurniawan";
-        ViewBag.role = "admin";
-
-        ViewData["users"] = users;
         return View(categories);
     }
 
